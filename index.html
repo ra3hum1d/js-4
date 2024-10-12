@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Перевірки полів вводу</title>
+    <script>
+        // Функція для перевірки заповнених текстових полів
+        function checkTextFields() {
+            const field1 = document.getElementById('textField1').value;
+            const field2 = document.getElementById('textField2').value;
+            if (field1 && field2) {
+                alert("Обидва поля заповнені");
+            } else {
+                alert("Не всі поля заповнені");
+            }
+        }
+
+        // Функція для перевірки числових полів
+        function checkNumericFields() {
+            const num1 = parseFloat(document.getElementById('numberField1').value) || 0;
+            const num2 = parseFloat(document.getElementById('numberField2').value) || 0;
+            const sum = num1 + num2;
+            if (sum > 10) {
+                alert("Сума більша за 10");
+            } else {
+                alert("Сума менша або дорівнює 10");
+            }
+        }
+
+        // Функція для перевірки наявності слова "JavaScript"
+        function checkJavaScript() {
+            const text = document.getElementById('textField3').value;
+            if (text.includes("JavaScript")) {
+                alert("Текст містить слово JavaScript");
+            } else {
+                alert("Текст не містить слово JavaScript");
+            }
+        }
+
+        // Функція для перевірки діапазону числа
+        function checkNumberRange() {
+            const number = parseFloat(document.getElementById('numberField3').value);
+            if (number > 10 && number < 20) {
+                alert("Число входить в діапазон від 10 до 20");
+            } else {
+                alert("Число не входить в діапазон від 10 до 20");
+            }
+        }
+
+        // Функція для перевірки правильності заповнення даних
+        function validateForm() {
+            const name = document.getElementById('nameField').value;
+            const email = document.getElementById('emailField').value;
+            const password = document.getElementById('passwordField').value;
+
+            const emailValid = email.includes('@') && email.indexOf('.') > email.indexOf('@');
+            if (name.length >= 3 && emailValid && password.length >= 6) {
+                alert("Дані правильно заповнені");
+                // Перенаправлення на іншу сторінку
+                window.location.href = "https://www.example.com"; // Змініть на потрібну URL
+            } else {
+                alert("Помилка: дані заповнені неправильно");
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Перевірка текстових полів</h2>
+    <input type="text" id="textField1" placeholder="Перше поле">
+    <input type="text" id="textField2" placeholder="Друге поле">
+    <button onclick="checkTextFields()">Перевірити</button>
+
+    <h2>Перевірка числових полів</h2>
+    <input type="number" id="numberField1" placeholder="Число 1">
+    <input type="number" id="numberField2" placeholder="Число 2">
+    <button onclick="checkNumericFields()">Перевірити</button>
+
+    <h2>Перевірка наявності слова "JavaScript"</h2>
+    <input type="text" id="textField3" placeholder="Введіть текст">
+    <button onclick="checkJavaScript()">Перевірити</button>
+
+    <h2>Перевірка діапазону числа</h2>
+    <input type="number" id="numberField3" placeholder="Введіть число">
+    <button onclick="checkNumberRange()">Перевірити</button>
+
+    <h2>Перевірка форми</h2>
+    <input type="text" id="nameField" placeholder="Ім'я">
+    <input type="email" id="emailField" placeholder="Email">
+    <input type="password" id="passwordField" placeholder="Пароль">
+    <button onclick="validateForm()">Перевірити дані</button>
+
+</body>
+</html>
